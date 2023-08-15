@@ -1,0 +1,13 @@
+<div class="space-y-4">
+  <h1 class="text-3xl"><%= @movie.title %></h1>
+  <p class="text-gray-500 text-sm">Year: <%= @movie.year %></p>
+  <p><%= @movie.details %></p>
+
+  <% if current_user&.favorite_movies&.include?(@movie) %>
+    <%= link_to 'Remove from Favorites', favorite_path(@movie.id), data: { "turbo-method": :delete }, class: 'inline-block bg-red-500 text-white px-4 py-2 rounded-md' %>
+  <% else %>
+    <%= link_to 'Add to Favorites', favorites_path(movie_id: @movie.id), data: { "turbo-method": :post }, class: 'inline-block bg-blue-500 text-white px-4 py-2 rounded-md' %>
+  <% end %>
+
+  <%= link_to 'Back', movies_path, class: 'inline-block bg-gray-500 text-white px-4 py-2 rounded-md' %>
+</div>

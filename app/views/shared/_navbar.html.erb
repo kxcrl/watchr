@@ -1,0 +1,11 @@
+<div class="flex justify-center my-4 mb-10">
+  <h1 class="<%= 'border-b-2 border-black' if controller_name == 'movies' %> mx-4">
+    <%= link_to 'Movies', movies_path %>
+  </h1>
+  <h1 class="<%= 'border-b-2 border-black' if controller_name == 'favorites' %> mx-4">
+    <%= link_to 'Favorites', favorites_path %>
+  </h1>
+  <h1 class="mx-4">
+    <%= link_to 'Logout', logout_path %>
+  </h1>
+</div>

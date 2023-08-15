@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Watchr</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-slate-100">
+    <% flash.each do |message_type, message| %>
+      <div data-controller="flash" class="flash-message <%= flash_message_class(message_type) %> p-4 rounded-md">
+        <%= message %>
+      </div>
+    <% end %>
+    <main class="container mx-auto bg-slate-100 mt-28 px-5 flex flex-col">
+      <% if controller_name == 'movies' || controller_name == 'favorites' %>
+        <%= render 'shared/navbar' %>
+      <% end %>
+
+      <div class="w-1/2 mx-auto">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
